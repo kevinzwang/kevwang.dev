@@ -1,9 +1,51 @@
-.drawing {
-  path {
-    fill: none;
-      stroke: black;
-      stroke-width: 6;
-      stroke-linejoin: round;
-      stroke-linecap: round;
+.front_page {
+  min-height: calc(100vh - 4rem);
+}
+
+$contacts_width: 30px;
+.contact_logo {
+  width: $contacts_width;
+  min-width: $contacts_width;
+  max-width: $contacts_width;
+}
+
+$project_logo_width: 24px;
+.project_logo {
+  width: $project_logo_width;
+  min-width: $project_logo_width;
+  max-width: $project_logo_width;
+}
+
+.project_name p {
+  position: relative;
+  display: inline-block;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: yellow;
+    width: 0;
+    transition-property: width;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
   }
 }
+
+.project:hover .project_name p::before {
+  width: 100%
+}
+
+$project_name_width: 9rem;
+@media (min-width: 768px) {
+  .project_name {
+    width: $project_name_width;
+    min-width: $project_name_width;
+    max-width: $project_name_width;
+  }
+}
+

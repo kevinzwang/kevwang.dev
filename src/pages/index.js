@@ -1,20 +1,42 @@
 import React from "react"
 import anime from "animejs"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAt } from "@fortawesome/free-solid-svg-icons"
+import { faAt, faBinoculars, faCommentDots, faTasks, faGlobeAmericas, faBalanceScale } from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import Layout from "../components/Layout"
 import Anime from "../components/Anime"
 import styles  from "../styles/styles.module.scss"
+import indexStyles from "./index.module.scss"
+
+const Project = ({ icon, color, name, description}) => {
+  return (
+    <div className={`flex items-center flex-row justify-start h-24 space-x-6 ${indexStyles.project}`}>
+      <FontAwesomeIcon size="lg" icon={icon} color={color} className={indexStyles.project_logo}/>
+      <div className={`font-medium text-2xl md:text-lg ${indexStyles.project_name}`}>
+        <p>{name}</p>
+      </div>
+      <p className="text-gray-600 hidden md:block flex-shrink">{description}</p>
+    </div>
+  )
+}
+
+const Section = ({ title, children }) => (
+  <div className="flex items-center justify-center">
+    <div className={`max-w-screen-md w-full px-12 md:px-6 mb-12 ${styles.divider}`}>
+      <h1 className="text-5xl mb-3 mt-12 font-medium inline-block">{title}</h1>
+      {children}
+    </div>
+  </div>
+)
 
 const IndexPage = () => {
   return (
     <Layout home>
-      <div className="h-full flex flex-col md:flex-row">
-        <div className="md:w-6/12 pt-12 pb-12 md:p-0 flex justify-center items-center">
+      <div className={`flex flex-col md:flex-row mb-8 md:mb-0 ${indexStyles.front_page}`}>
+        <div className="h-6/12 md:h-auto md:w-6/12 py-12 md:p-0 flex justify-center items-center">
           <svg className={`w-7/12 ${styles.drawing}`} viewBox="0 0 129 132">
             <Anime
-              easing="easeInOutSine"
+              easing="linear"
               duration={2000}
               delay={(el, index) => index * 2000}
               strokeDashoffset={[anime.setDashoffset, 0]}
@@ -24,33 +46,64 @@ const IndexPage = () => {
             </Anime>
           </svg>
         </div>
-        <div className="md:w-6/12 font-sans lg:text-3xl text-2xl lg:p-40 md:p-20 p-10 pt-0 flex justify-center content-center flex-col space-y-6">
+        <div className="h-6/12 md:h-auto md:w-6/12 font-sans lg:text-3xl text-2xl lg:p-40 md:px-20 px-10 flex justify-center content-center flex-col space-y-6">
           <p>Hi there!</p>
-          <p>I'm Kev, a <span className={styles.highlight}>software developer</span> currently studying EE/CS at 🐻 <span className={styles.highlight}>UC Berkeley</span>.</p>
-          <p>This website is a work in progress. Check back later for more!</p>
+          <p>I'm Kev, a <span className="bg-yellow">software developer</span> currently studying EE/CS at 🐻 <span className="bg-yellow">UC Berkeley</span>.</p>
 
           <div className="space-y-3 flex flex-col">
-            <a href="https://www.linkedin.com/in/kevinzhiwang/">
-              <div className={`flex content-center space-x-2 underline float-left ${styles.hover_highlight}`}>
-                <FontAwesomeIcon icon={faLinkedin} />
+            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/kevinzhiwang/">
+              <div className={`flex content-center space-x-3 float-left ${styles.highlight}`}>
+                <FontAwesomeIcon icon={faLinkedin} className={indexStyles.contact_logo} />
                 <span className="text-xl">kevinzhiwang</span>
               </div>
             </a>
-            <a href="https://github.com/kevinzwang">
-              <div className={`flex content-center space-x-2 underline float-left ${styles.hover_highlight}`}>
-                <FontAwesomeIcon icon={faGithub} />
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/kevinzwang">
+              <div className={`flex content-center space-x-3 float-left ${styles.highlight}`}>
+                <FontAwesomeIcon icon={faGithub} className={indexStyles.contact_logo} />
                 <span className="text-xl">kevinzwang</span>
               </div>
             </a>
-            <a href="mailto:kev@kevwang.dev">
-              <div className={`flex content-center space-x-2 underline float-left ${styles.hover_highlight}`}>
-                <FontAwesomeIcon icon={faAt} />
+            <a target="_blank" rel="noopener noreferrer" href="mailto:kev@kevwang.dev">
+              <div className={`flex content-center space-x-3 float-left ${styles.highlight}`}>
+                <FontAwesomeIcon icon={faAt} className={indexStyles.contact_logo} />
                 <span className="text-xl">kev@kevwang.dev</span>
               </div>
             </a>
           </div>
         </div>
       </div>
+      <Section title="Latest Articles">
+        <p>I don't have any blog posts yet. Check back later, I'll start writing stuff soon!</p>
+      </Section>
+      <Section title="Projects">
+       <div className=" border-gray-300 divide-y-2 divide-gray-300">
+        <Project 
+          icon={faBinoculars} 
+          name="CabbageScout" 
+          description="An intuitive and platform agnostic scouting app for the 2020/21 FIRST Robotics game."
+        />
+        <Project 
+          icon={faCommentDots} 
+          name="Nano" 
+          description="Personal multi-purpose Discord chat bot."
+        />
+        <Project 
+          icon={faTasks} 
+          name="GoGoGrader" 
+          description="Kumon workbook grading tool with Google Sheets integration."
+        />
+        <Project 
+          icon={faGlobeAmericas} 
+          name="Kiva Translator Tooltip"
+          description="Browser extension for assisting with language translation. My 2018 internship project."
+        />
+        <Project
+          icon={faBalanceScale}
+          name="Robot Code 2018"
+          description="FRC Team 199 robot code for the 2018 game: Power Up."
+        />
+        </div>
+      </Section>
     </Layout>
   )
 }

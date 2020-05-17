@@ -9,3 +9,7 @@
 .z--20 {
   z-index: -20;
 }
+
+.bg-yellow {
+  background-color: yellow;
+}

@@ -22,8 +22,8 @@ const Layout = ({ children, home }) => {
 
   return (
     <>
-      <header className={`bg-white fixed w-full flex justify-center ${layoutStyles.header} ${(!atTop || smallHeader) && layoutStyles.small} ${atTop || layoutStyles.scroll}`}>
-        <div className="flex items-center justify-between pl-8 pr-8 w-full max-w-screen-md">
+      <header className={`bg-white fixed w-full flex justify-center z-10 ${layoutStyles.header} ${(!atTop || smallHeader) && layoutStyles.small} ${atTop || layoutStyles.scroll}`}>
+        <div className="flex items-center justify-between px-8 w-full max-w-screen-md">
           <Link to="/">
             <svg className={`h-8 ${layoutStyles.logo} ${styles.drawing}`} viewBox="0 5 231 61" overflow="visible">
               <path d="m 35.919521,49.652412 c 0,0 -5.535356,7.195965 -12.3992,7.195965 -6.863841,0 -8.85657,-7.970914 -8.85657,-7.970914 0,0 5.092527,-2.656972 7.970913,-4.6497 C 25.513048,42.235035 27.395072,31.607148 18.317087,33.932002 9.4408971,36.205175 4.0358671,56.73767 4.0358671,56.73767 c 0,0 -2.656971,-21.145063 3.210507,-41.29376 C 13.113851,-4.7047867 21.970421,2.8232982 19.645572,15.222496 17.320722,27.621695 4.1465741,36.478265 4.1465741,36.478265" />
@@ -35,14 +35,24 @@ const Layout = ({ children, home }) => {
             </svg>
           </Link>
           <div className="space-x-10 font-sans text-lg font-light tracking-wide">
-            <Link to="/" className={styles.hover_highlight}>Home</Link>
-            <Link to="/blog" className={styles.hover_highlight}>Blog</Link>
+            <Link to="/" className={`px-3 py-1 ${styles.highlight}`}>Home</Link>
+            <Link to="/blog" className={`px-3 py-1 ${styles.highlight}`}>Blog</Link>
           </div>
         </div>
       </header>
-      <main className={`h-screen box-border ${smallHeader ? "pt-16" : "pt-56"}`}>
+      <main className={`box-border ${smallHeader ? "pt-16" : "pt-40"}`}>
         {children}
       </main>
+      <footer className="flex items-center justify-center">
+        <div className={`h-20 max-w-screen-md w-full px-12 md:px-6 flex ${styles.divider}`}>
+          <div className="h-full w-full flex items-center justify-between text-gray-500 font-light">
+            <div>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/kevinzwang/kevwang.dev" className={styles.highlight}>kevwang.dev</a>
+            </div>
+            <div>Built with Gatsby and Netlify</div>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
