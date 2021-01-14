@@ -8,7 +8,7 @@ import styles from './index.module.css'
 
 const Section = ({ id, title, children }) => (
   <div id={id} className={`flex items-center justify-center ${styles.anchor}`}>
-    <div className={`max-w-screen-md w-full px-12 md:px-6 mb-12 ${styles.divider}`}>
+    <div className={`max-w-screen-md w-full px-8 mb-12 ${styles.divider}`}>
       <h1 className="text-5xl mb-8 mt-12 font-medium inline-block">{title}</h1>
       {children}
     </div>

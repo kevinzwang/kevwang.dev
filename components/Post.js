@@ -6,7 +6,7 @@ export default function Post({ title, date, tags, children }) {
   return (
     <Layout title={title}>
       <div className="flex items-center justify-center">
-        <div className="max-w-screen-sm w-full px-12 md:px-6">
+        <div className="max-w-screen-sm w-full px-8">
           <div className="flex flex-row flex-wrap mb-3 mt-4">
             {tags}
           </div>
