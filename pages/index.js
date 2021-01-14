@@ -87,7 +87,7 @@ export default function Home() {
             <ArticleCard
               href="/blog/cs-61a"
               title="CS 61A"
-              description="An extraordinary summer, taking an extaordinary class."
+              description="An extraordinary summer, taking an extraordinary class."
               date="Aug 21, 2020"
               tags={[<div className="text-yellow-500">Course Review</div>]}
             />
