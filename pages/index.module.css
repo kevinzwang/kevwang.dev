@@ -1,0 +1,66 @@
+.name > path {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.divider::before {
+  content: '';
+  width: calc(100% - 3rem);
+  left: 1.5rem;
+  height: 1px;
+  background: #d1d5db;
+  position: absolute;
+}
+
+.down_arrow {
+  top: 75vh;
+}
+
+.project_name {
+  width: 10rem;
+  min-width: 10rem;
+  max-width: 10rem;
+}
+
+.anchor {
+  scroll-margin-top: 63px;
+}
+
+@media only screen and (max-width: 640px) {
+  .anchor {
+    scroll-margin-top: 47px;
+  }
+}
+
+.kev {
+  stroke-dasharray: 330.9598388671875;
+  stroke-dashoffset: 330.9598388671875;
+  animation: kev 2s linear 0.5s forwards;
+}
+
+@keyframes kev {
+  from {
+    stroke-dashoffset: 330.9598388671875;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.wang {
+  stroke-dasharray: 533.4273071289062;
+  stroke-dashoffset: 533.4273071289062;
+  animation: wang 3s linear 2.5s forwards;
+}
+
+@keyframes wang {
+  from {
+    stroke-dashoffset: 533.4273071289062;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
