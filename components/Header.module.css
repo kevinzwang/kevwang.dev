@@ -1,0 +1,26 @@
+.header::after {
+  content: '';
+  width: 100%;
+  left: 0rem;
+  height: 1px;
+  background: white;
+  position: absolute;
+  bottom: 0px;
+  transition: ease 300ms;
+}
+
+.scroll::after {
+  background: #d1d5db;
+}
+
+.name > path {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.w_transform {
+  transform: translate(-69px, 0); /* haha funny number */
+}
