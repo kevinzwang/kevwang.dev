@@ -6,8 +6,8 @@ import Layout from "../components/Layout";
 import ScrollLink from '../components/ScrollLink';
 import styles from './index.module.css'
 
-const Section = ({ id, title, children }) => (
-  <div id={id} className={`flex items-center justify-center ${styles.anchor}`}>
+const Section = ({ id, title, children, visible }) => (
+  <div id={id} className={`flex items-center justify-center ${styles.anchor}`} style={visible === false ? {display: "none"} : {}}>
     <div className={`max-w-screen-md w-full px-8 mb-12 ${styles.divider}`}>
       <h1 className="text-5xl mb-8 mt-12 font-medium inline-block">{title}</h1>
       {children}
@@ -55,6 +55,8 @@ const ProjectCard = ({ icon, name, description, languages, tools, more }) => {
 }
 
 export default function Home() {
+  const [showFriends, setShowFriends] = useState(false);
+
   return (
     <Layout title="Home">
       <motion.div 
@@ -73,6 +75,7 @@ export default function Home() {
               <ScrollLink href="/#posts"><a className="hover:underline cursor-pointer">Blog</a></ScrollLink>
               <ScrollLink href="/#projects"><a className="hover:underline cursor-pointer">Projects</a></ScrollLink>
               <ScrollLink href="/#contact"><a className="hover:underline cursor-pointer">Contact</a></ScrollLink>
+              <ScrollLink href="/#friends"><a className={"hover:underline cursor-pointer " + styles.visible_on_hover} onMouseDown={() => setShowFriends(true)}>Friends</a></ScrollLink>
             </div>
             <ScrollLink href="/#posts">
               <img 
@@ -183,6 +186,13 @@ export default function Home() {
             <p>🖥️ <a className="hover:underline" href="https://github.com/kevinzwang" target="_blank">github.com/kevinzwang</a></p>
             <p>ℹ️ <a className="hover:underline" href="https://www.linkedin.com/in/kevinzhiwang/" target="_blank">linkedin.com/in/kevinzhiwang</a></p>
           </div>
+        </Section>
+        <Section id="friends" title="Friends" visible={showFriends}>
+          <ul className="list-none">
+            <li><b>Nikhil</b>: <a className="hover:underline" href="https://nikhiljha.com/" target="_blank">nikhiljha.com</a></li>
+            <li><b>Sebi</b>: <a className="hover:underline" href="https://sebiszafir.com/" target="_blank">sebiszafir.com</a></li>
+            <li><b>Gabe</b>: <a className="hover:underline" href="https://gabe-mitnick.github.io/" target="_blank">gabe-mitnick.github.io</a></li>
+          </ul>
         </Section>
         </motion.div>
     </Layout>
